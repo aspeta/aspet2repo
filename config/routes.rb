@@ -1,5 +1,5 @@
 # config/routes.rb
-
+#
 Bloccit::Application.routes.draw do
   get "welcome/index"
 
