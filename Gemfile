@@ -12,7 +12,7 @@ end
 gem 'bootstrap-sass', '~> 3.1.1'
 
 # Faker gem file to generate fake data
-# gem 'faker'
+  gem 'faker'
 
 group :development do
   gem 'sqlite3'
