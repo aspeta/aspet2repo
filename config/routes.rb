@@ -1,9 +1,10 @@
 # config/routes.rb
-#
+
 Bloccit::Application.routes.draw do
-  get "welcome/index"
 
-  get "welcome/about"
+  resources :posts
 
-   root to: 'welcome#index'
+  get 'about' => 'welcome#about'
+
+  root to: 'welcome#index'
 end
