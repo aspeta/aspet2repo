@@ -8,8 +8,8 @@ gem 'rails', '4.0.4'
 group :production do
   gem 'pg'
 end
-
-gem 'bootstrap-sass', '~> 3.1.1'
+#loads bootstrap css 3.1.1
+  gem 'bootstrap-sass', '~> 3.1.1'
 
 # Faker gem file to generate fake data
   gem 'faker'
