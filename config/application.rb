@@ -6,7 +6,9 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
-
+# for heroku 3.2 only if you dont want the application to access the db
+# or load models when precomiling assets
+#  config.assets.initialize_on_precompile = false
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)

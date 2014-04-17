@@ -42,6 +42,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# adding devise for user authentication
+gem 'devise'
+# adding figaro
+gem 'figaro'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
