@@ -8,40 +8,105 @@
 # db/seeds.rb
 
 
-require 'faker'
+# require 'faker'
 
 # Create 5 users with their own posts
-5.times do
-  password = Faker::Lorem.characters(10)
-  user = User.new(
-    name: Faker::Name.name, 
-    email: Faker::Internet.email, 
-    password: password, 
-    password_confirmation: password)
-  user.skip_confirmation!
-  user.save
+#5.times do
+# password = Faker::Lorem.characters(10)
+#user = User.new(
+#   name: Faker::Name.name, 
+#   email: Faker::Internet.email, 
+#   password: password, 
+#    password_confirmation: password)
+#  user.skip_confirmation!
+#  user.save
 
   # Note: by calling `User.new` instead of `create`,
   # we create an instance of a user which isn't saved to the database.
   # The `skip_confirmation!` method sets the confirmation date
   # to avoid sending an email. The `save` method updates the database.
 
-  5.times do
-    post = Post.create(
-      user: user,
-      title: Faker::Lorem.sentence, 
-      body: Faker::Lorem.paragraph)
-    # set the created_at to a time within the past year
-    post.update_attribute(:created_at, Time.now - rand(600..31536000))
-  end
+#  5.times do
+#    post = Post.create(
+#      user: user,
+#      title: Faker::Lorem.sentence, 
+#      body: Faker::Lorem.paragraph)
+# set the created_at to a time within the past year
+#    post.update_attribute(:created_at, Time.now - rand(600..31536000))
+#  end
+#end
+# db/seeds.rb
+
+require 'faker'
+
+# Create Users
+5.times do
+  user = User.new(
+    name:     Faker::Name.name,
+    email:    Faker::Internet.email,
+    password: Faker::Lorem.characters(10)
+  )
+  user.skip_confirmation!
+  user.save
+end
+users = User.all
+
+
+# Create Topics
+15.times do
+  Topic.create(
+    name:         Faker::Lorem.sentence,
+    description:  Faker::Lorem.paragraph
+  )
+end
+topics = Topic.all
+
+# Create Posts
+50.times do
+  Post.create(
+    user:   users.sample,
+    topic:  topics.sample,
+    title:  Faker::Lorem.sentence,
+    body:   Faker::Lorem.paragraph
+  )
 end
 
 
-user = User.first
-user.skip_reconfirmation!
-user.update_attributes(email: 'aspeta@yahoo.com', password: 'aspet123', password_confirmation: 'aspet123')
 
-puts "Seed finished"
-puts "#{User.count} users created"
-puts "#{Post.count} posts created"
-puts "#{Comment.count} comments created"
+# User.first.update_attributes(email: 'aspeta@yahoo.com', password: 'aspet123')
+
+# Create an admin user
+admin = User.new(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+)
+admin.skip_confirmation!
+admin.save
+
+# Create a moderator
+moderator = User.new(
+  name:     'Moderator User',
+  email:    'moderator@example.com', 
+  password: 'helloworld',
+  role:     'moderator'
+)
+moderator.skip_confirmation!
+moderator.save
+
+# Create a member
+member = User.new(
+  name:     'Member User',
+  email:    'member@example.com',
+  password: 'helloworld',
+)
+member.skip_confirmation!
+member.save
+
+
+#puts "Seed finished"
+#puts "#{User.count} users created"
+#puts "#{Post.count} posts created"
+#puts "#{Comment.count} comments created"
+#puts "#{Topic.count} topics created"
