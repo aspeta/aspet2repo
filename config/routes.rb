@@ -7,6 +7,8 @@ Bloccit::Application.routes.draw do
 #  get "topics/show"
 #  get "topics/edit"
   devise_for :users
+  resources :users, only: [:update]
+
  
   resources :topics do
     resources :posts
