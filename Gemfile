@@ -48,9 +48,14 @@ gem 'devise'
 gem 'figaro'
 # adding pundit for user authentication
 gem 'pundit'
-
+#adding redcarpet for formatting
 gem 'redcarpet'
+# adding carrierwave and minimagick for image uploads
+gem 'carrierwave' 
+gem 'mini_magick'
 
+#adding fog for cloud services library and makes uploading to S3 easier s3 is amazon cloud
+gem 'fog'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
