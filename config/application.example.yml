@@ -3,3 +3,9 @@
 SENDGRID_PASSWORD: 'uoottnam'
 SENDGRID_USERNAME: 'app23962023@heroku.com'
 DEVISE_SECRET_KEY: '347d17d29dda31011bceb426e12a0bb0361e60889bc9e8f79e8629875f1449779e74c4802df47b7edab9cb5c750daba3d59e4d95d6633ed8169fbd7cb899012f'
+AWS_ACCESS_KEY_ID: 'AKIAIGS44BPSQPWSEOTQ'
+AWS_SECRET_ACCESS_KEY: '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'
+development:
+  'AWS_BUCKET: aspet-bloccit-development'
+production:
+  'AWS_BUCKET: aspet-bloccit-production'

@@ -40,17 +40,7 @@
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control', placeholder: "Enter name", autofocus: true %>
       </div>
- <% if current_user.image? %>
-        <div class="form-group">
-          <p>Current image</p>
-          <%= image_tag( current_user.image.profile.url ) %>
-        </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :image %>
-        <%= f.file_field :image %>
-        <%= f.hidden_field :image_cache %>
-      </div>
+ 
      <% if current_user.avatar? %>
         <div class="form-group">
           <p>Current avatar</p>
