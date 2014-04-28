@@ -56,7 +56,11 @@ gem 'mini_magick'
 
 #adding fog for cloud services library and makes uploading to S3 easier s3 is amazon cloud
 gem 'fog'
+
+# for pagination
+gem 'will_paginate', '~> 3.0.5'
 # Use ActiveModel has_secure_password
+
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
