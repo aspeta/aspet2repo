@@ -1,55 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-# db/seeds.rb
-
-
-# require 'faker'
-
-# Create 5 users with their own posts
-#5.times do
-# password = Faker::Lorem.characters(10)
-#user = User.new(
-#   name: Faker::Name.name, 
-#   email: Faker::Internet.email, 
-#   password: password, 
-#    password_confirmation: password)
-#  user.skip_confirmation!
-#  user.save
-
-  # Note: by calling `User.new` instead of `create`,
-  # we create an instance of a user which isn't saved to the database.
-  # The `skip_confirmation!` method sets the confirmation date
-  # to avoid sending an email. The `save` method updates the database.
-
-#  5.times do
-#    post = Post.create(
-#      user: user,
-#      title: Faker::Lorem.sentence, 
-#      body: Faker::Lorem.paragraph)
-# set the created_at to a time within the past year
-#    post.update_attribute(:created_at, Time.now - rand(600..31536000))
-#  end
-#end
-# db/seeds.rb
-
 require 'faker'
-
-# Create Users
 5.times do 
-  user = User.new(
-    name:     Faker::Name.name,
-    email:    Faker::Internet.email,
-    password: Faker::Lorem.characters)
+  user= User.new(name: Faker::Name.name,email:Faker::Internet.email,password: Faker::Lorem.characters)
   user.skip_confirmation!
   user.save
 end
 users = User.all
-
 # Create Topics
 15.times do
   Topic.create(
@@ -57,27 +12,27 @@ users = User.all
     description: Faker::Lorem.paragraph)
 end
 topics = Topic.all
-
 # Create Posts
 50.times do
-  Post.create(
+    post =  Post.create(
     user:  users.sample,
     topic: topics.sample,
     title: Faker::Lorem.sentence,
     body:  Faker::Lorem.paragraph)
+# set the created_at to a time within the past year
+    post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+    post.update_rank
 end
 posts = Post.all
-
 # Create comments
 100.times do
-  Comment.create(
+    Comment.create(
     user: users.sample,
     post: posts.sample,
     body: Faker::Lorem.paragraph)
+# set the created_at to a time within the past year
+#comment.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
 end
-
-# User.first.update_attributes(email: 'aspeta@yahoo.com', password: 'aspet123')
-
 # Create an admin user
 admin = User.new(
   name:     'Admin User',
@@ -86,7 +41,6 @@ admin = User.new(
   role:     'admin')
 admin.skip_confirmation!
 admin.save
-
 # Create a moderator
 moderator = User.new(
   name:     'Moderator User',
@@ -95,7 +49,6 @@ moderator = User.new(
   role:     'moderator')
 moderator.skip_confirmation!
 moderator.save
-
 # Create a member
 member = User.new(
   name:     'Member User',
@@ -103,7 +56,6 @@ member = User.new(
   password: 'helloworld')
 member.skip_confirmation!
 member.save
-
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Post.count} posts created"
