@@ -1,6 +1,10 @@
 require 'faker'
 5.times do 
-  user= User.new(name: Faker::Name.name,email:Faker::Internet.email,password: Faker::Lorem.characters)
+  user= User.new(
+  name: Faker::Name.name,
+  email:Faker::Internet.email,
+  password: Faker::Lorem.characters(128)
+  )
   user.skip_confirmation!
   user.save
 end
